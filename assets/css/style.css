@@ -1,0 +1,614 @@
+:root {
+    --dark-grey: #1B1B1B;
+    --light-grey: #666666;
+    --light-purple: #C58ED1;
+    --light-black: #1a1a1a;
+    --purple: #6F4C99;
+    --silver: #AAA;
+}
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', 'san-serif';
+    font-weight: 300;
+    background-color: var(--dark-grey);
+    color: var(--light-purple);
+    font-size: 1.5rem;
+}
+
+main {
+    border-top: 1px solid var(--light-grey);
+    border-bottom: 1px solid var(--light-grey);
+}
+
+button {
+    border: none;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hero Styling */
+#hero h1 {
+    font-size: 4em;
+    color: var(--silver);
+    font-family: 'Gruppo', cursive;
+    text-transform: none;
+    padding: 20px 40px;
+    margin: 0;
+    margin-left: 100px;
+}
+
+#hero {
+    background-image: url("../images/stargazr-bg.jpg");
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 94%;
+    display: flex;
+    align-items: center;
+}
+
+/* Header Styling */
+.heading {
+    align-self: center;
+    color: var(--silver);
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    font-family: 'Gruppo', 'cursive';
+}
+
+.heading::before,
+.heading::after {
+    content: '';
+    display: block;
+    height: .075em;
+    min-height: 1px;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+}
+
+.heading::before {
+    left: -20px;
+    transform: translate(-100%, -50%);
+    background-image: linear-gradient(to right, transparent 10%, var(--purple) 100%);
+}
+
+.heading::after {
+    right: -20px;
+    transform: translate(100%, -50%);
+    background-image: linear-gradient(to left, transparent 10%, var(--purple) 100%);
+}
+
+/* Virtual Map Styling */
+#stars {
+    width: 800px;
+    height: 800px;
+    border: none;
+    margin: 0;
+}
+
+.star-map {
+    margin: 10px 0;
+    margin-bottom: 65px;
+}
+
+iframe {
+    height: 600px;
+    width: 100%;
+    border: 1px solid var(--light-grey);
+    border-radius: 2px;
+}
+
+#map-container {
+    padding-right: 30px;
+}
+
+/* Input Styling */
+input:focus {
+    border-bottom: 1px solid var(--light-purple) !important;
+    box-shadow: 0 1px 0 0 var(--light-purple) !important;
+}
+
+label {
+    font-family: 'Roboto', 'san-serif';
+}
+
+label.active {
+    color: var(--light-purple) !important;
+    font-family: 'Roboto', 'san-serif';
+}
+
+.city-search {
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    flex-grow: 1;
+}
+
+#city {
+    color: white !important;
+}
+
+#city-search-container {
+    padding-left: 30px;
+}
+
+#search-history-item {
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+#search-btn {
+    background-color: var(--light-grey);
+    height: 48px;
+    margin: 0 0 8px 10px;
+    width: 3rem;
+    color: white;
+}
+
+#search-btn:hover {
+    background-color: var(--light-purple);
+    color: var(--dark-grey);
+}
+
+#search-btn>span {
+    line-height: 1.5;
+    padding: 0;
+}
+
+#search-btn:hover span {
+    font-weight: bold;
+}
+
+/* City History List Styling */
+#search-history-item {
+    background-color: var(--light-grey);
+    padding: 10px 30px;
+    margin-bottom: 5px;
+    color: white;
+    display: list-item;
+}
+
+#search-history-item:hover {
+    background-color: var(--light-purple);
+    color: var(--dark-grey);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+/* Section Styling */
+/* Weather Section Styling */
+#weather-section {
+    background-color: black;
+    height: 0px;
+    border-top: 1px solid var(--light-grey);
+    border-bottom: 1px solid var(--light-grey);
+    transition: 150ms height ease-out;
+    overflow: hidden;
+}
+
+#weather-section.expanded {
+    height: 260px;
+}
+
+#weather-header {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 50px;
+}
+
+#weather-header h2 {
+    display: inline;
+    font-size: 30px;
+}
+
+#weather-header h2>span,
+#sun-moon-heading h2>span {
+    color: var(--silver);
+    font-size: 40px;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.weather-card {
+    font-family: 'Roboto', 'san-serif';
+    font-weight: 300;
+    text-align: center;
+}
+
+.weather-card h3 {
+    font-size: 1.3vw;
+    text-align: center;
+    color: white;
+    font-family: 'Gruppo', 'cursive';
+    margin: 20px 0 0 0;
+}
+
+.weather-card img {
+    height: 70px;
+}
+
+.weather-card p,
+.weather-card span {
+    font-size: max(12px, 1vw);
+}
+
+.weather-card span {
+    color: white;
+    text-transform: capitalize;
+}
+
+/* Sun & Moon Styling */
+#sun-moon-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#sun-moon-heading h2 {
+    font-size: 30px;
+    margin: 20px 0 0 0;
+}
+
+#sun-moon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+#sun-moon h3 {
+    font-size: 1.2vw;
+    text-align: center;
+    color: var(--silver);
+    font-family: 'Gruppo', 'cursive';
+    margin: 10px 0 0 0;
+    text-transform: uppercase;
+}
+
+#sun-moon img {
+    padding: 10px;
+    height: 70px;
+}
+
+#moon-heading {
+    margin-left: 40px;
+}
+
+#sun,
+#moon {
+    flex-direction: column;
+    padding: 0;
+}
+
+#sun p,
+#moon p {
+    white-space: nowrap;
+    font-size: 1.2vw;
+}
+
+#sun span,
+#moon span {
+    color: white;
+}
+
+/* Modal Styling */
+#modal {
+    position: absolute;
+    background: url(tint20.png) 0 0 repeat;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    padding: 8px;
+}
+
+#content {
+    border-radius: 8px;
+    background: #fff;
+    padding: 20px;
+}
+
+#close {
+    position: absolute;
+    background: url(close.png) 0 0 no-repeat;
+    width: 24px;
+    height: 27px;
+    display: block;
+    text-indent: -9999px;
+    top: -7px;
+    right: -7px;
+}
+
+/* Modal Background Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: var(--dark-grey);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Footer Style */
+footer {
+    background-image: url("../images/stargazr-bg.jpg");
+    height: 75px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    color: white;
+}
+
+footer a {
+    color: var(--light-purple);
+    font-size: 1em;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.team {
+    font-weight: bold;
+    color: var(--silver);
+}
+
+footer img {
+    width: 40px;
+    vertical-align: top;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 1200px) {
+    #hero {
+        height: 200px;
+    }
+
+    #weather-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    #weather-wrapper {
+        padding: 0 40px;
+    }
+
+    #weather-header {
+        margin: 0;
+        padding: 0;
+    }
+
+    #weather-section h2 {
+        margin: 20px 0 0 0;
+        font-size: 1em;
+    }
+
+    #weather-section h2>span {
+        font-size: 1.4em;
+    }
+
+    .weather-container {
+        margin: 10px 0;
+    }
+
+    #weather-section h3 {
+        margin: 5px 0;
+        font-size: 1em;
+    }
+
+    #weather-section img {
+        height: 50px;
+        padding: 0;
+    }
+
+    #weather-section p {
+        font-size: 0.60em;
+    }
+
+    #weather-section span {
+        font-size: 1em;
+    }
+
+    #weather-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #sun-moon-container {
+        margin: 1.5vw 0 0 0;
+    }
+
+    #sun-moon {
+        padding: 1vw 1.5vw 0 50px;
+    }
+
+    #sun-moon-container h3 {
+        font-size: 0.8em;
+    }
+
+    #sun-moon-container img {
+        margin: 5px 0;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 300px;
+    }
+
+    #search-history li {
+        font-size: 1.3vw;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    #weather-section h3 {
+        font-size: 1.5vw;
+    }
+
+    #weather-wrapper,
+    #sun-moon {
+        margin: 0;
+        padding: 1.4vw 0;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 20vw;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    #hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+    }
+
+    #hero h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    #weather-section.expanded {
+        height: 420px;
+    }
+
+    #weather-section h3 {
+        font-size: 3vw;
+        text-align: center;
+        margin: 10px;
+    }
+
+    #weather-wrapper,
+    #sun-moon {
+        margin: 0;
+        padding: 0;
+    }
+
+    .weather-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    #sun-moon-container {
+        justify-content: space-around;
+    }
+
+    #sun-moon-container img {
+        float: left;
+        margin: 0 20px 0 0;
+        padding: 0;
+    }
+
+    #sun-moon-container p {
+        font-size: 2.5vw;
+    }
+
+    #sun,
+    #moon {
+        margin: 0 20px;
+    }
+
+    #sky-header h2 {
+        font-size: 7vw;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 20vw;
+    }
+
+    .star-map {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;
+    }
+
+    #city-search-container,
+    #map-container {
+        padding: 0 20px;
+        margin: 20px;
+    }
+
+    #search-history-list li {
+        font-size: 3vw;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}

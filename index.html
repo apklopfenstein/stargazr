@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Stargazr</title>
+</head>
+
+<body>
+    <header id="hero">
+        <h1>STARGAZR</h1>
+    </header>
+    <main>
+        <!-- Weather Banner -->
+        <section class="row" id="weather-section">
+            <!-- Overnight Weather -->
+            <div class="col s12 m7 l7 xl8" id="weather-wrapper">
+                <div class="col xl3" id="weather-header">
+                    <h2>Tonight's <span>Weather</span></h2>
+                </div>
+                <div class="weather-container col l12 xl9"></div>
+            </div>
+            <!-- Sun & Moon Section -->
+            <div class="col s12 m5 l5 xl4" id="sun-moon">
+                <div id="sun-moon-heading">
+                    <h2>Tonight's <span>Sun & Moon</span></h2>
+                </div>
+                <div id="sun-moon-container">
+                    <div class="col" id="sun"></div>
+                    <div class="col" id="moon"></div>
+                </div>
+            </div>
+        </section>
+            <!-- Virtual Sky Map Section -->
+        <section>
+            <!-- Map Header -->
+            <div class="center" id="sky-header">
+                <h2 class="heading">Virtual Sky</h2>
+            </div>
+            <div class="row star-map">
+                <!-- City Search -->
+                <div class="col s12 m3 l3 xl3" id="city-search-container">
+                    <div class="city-search">
+                        <div class="input-field">
+                            <input autocomplete="off" type="text" id="city" name="city" />
+                            <label for="city">City</label>
+                        </div>
+                        <button class="z-depth-2 waves-effect waves-light" id="search-btn">
+                            <span class="material-icons">search</span>
+                        </button>
+                    </div>
+                    <div id="search-history">
+                        <ul id="search-history-list"></ul>
+                    </div>
+                </div>
+                <!-- Virtual Sky Map -->
+                <div class="col s12 m9 l9 xl9 center" id="map-container">
+                    <iframe id="virtual-sky" frameborder="0" scroll="auto" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273"
+                        allowTransparency="true"></iframe>
+                </div>
+            </div>
+        </section>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>City not found, please try again!</p>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <a target="_blank" href="https://github.com/p1t2-batman/stargazr">Check out our GitHub!</a>
+        </div>
+        <div class="team">
+            Team Batman <img src="./assets/images/batman.png" />
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"
+        integrity="sha512-Dz4zO7p6MrF+VcOD6PUbA08hK1rv0hDv/wGuxSUjImaUYxRyK2gLC6eQWVqyDN9IM1X/kUA8zkykJS/gEVOd3w=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
