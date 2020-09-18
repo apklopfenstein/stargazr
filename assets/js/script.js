@@ -6,7 +6,6 @@ var cityListEl = $('#search-history-list');
 var cities = JSON.parse(localStorage.getItem('cities')) || [];
 var virtualSkyEl = $('#virtual-sky');
 var virtualSkyUrlBase = 'https://virtualsky.lco.global/embed/index.html?gradient=false&projection=lambert&constellations=true&constellationlabels=true&meteorshowers=true&showstarlabels=true&live=true&az=127.61740917006273';
-var modal = document.getElementById("myModal");
 
 var getWeatherByCity = function (city, isButtonClick) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=' + appId;
